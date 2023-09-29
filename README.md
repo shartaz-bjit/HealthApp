@@ -1,7 +1,9 @@
 # HealthApp
-### Each service is described below, follow the design & described guidelines for rapid development.
-### Add more info if needed. 
-### Please follow naming conventions perfectly for conflit-free development.
+### 🔵 Each service is described below, follow the design & described guidelines for rapid development.
+### 🟢 Add more info if needed. 
+### 🟣 Please follow naming conventions perfectly for conflit-free development.
+
+<br><hr><hr>
 
 ## User service
 The following sections describe the planned **database design**, relations between different tables, **required API endpoints and inter-service dependencies**. Information provided here is not fixed. **Include more if needed**. If any API/service requires an internal call to a different service then use this icon 🔴 to mark it as important so that the developer assigned to that particular service can see high priority API easily. 
@@ -26,3 +28,28 @@ The following sections describe the planned **database design**, relations betwe
     - Read user contact information by ID.
 
 - **/users/health-data**: Provide health data (🔴 Internal call to health service)
+
+<br><hr><hr>
+
+
+## Nutrition service
+The following sections describe the planned **database design**, relations between different tables, **required API endpoints and inter-service dependencies**. Information provided here is not fixed. **Include more if needed**. If any API/service requires an internal call to a different service then use this icon 🔴 to mark it as important so that the developer assigned to that particular service can see high priority API easily.
+### Database relations
+![alt text](/Resources/DBDiagrams/NutritionService.png?raw=true)
+### Required APIS
+*API's that are mentioned in  the requirements list are marked bold.*
+
+- **/nutrition/**: Make all 4 CRUD API's - create, read, update, delete.
+- **/nutrition/search**: Search for healthy foods. If the searched keyword matches with any food (organic) then return all of its information with recipe list as well, however if there is no recipe then just return the food info. 
+
+- **/nutrition/details/{word}**: Get all details of a food (same as get by name).
+- **/nutrition/details/recipe/{id}**: Get recipe nutrition details. 
+- **/nutrition/details/food/{id}**: Get food nutrition details.
+
+- **/nutrition/recommendations**: Retrieve food recommendations based on specified parameters.
+    - For example, if you specify "Vitamin-B" as the parameter, it will return foods rich in Vitamin-B.
+    - If you specify "Protein," it will return high-protein foods.
+    - This API can provide recommendations based on various nutritional criteria.
+
+<br><hr><hr>
+
