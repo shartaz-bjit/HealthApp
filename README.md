@@ -27,9 +27,10 @@ The following sections describe the planned **database design**, relations betwe
     - Create or update user contact information.
     - Read user contact information by ID.
 
-- **/users/health-data**: Provide health data (🔴 Internal call to health service)
+  - **/users/health-data**: Provide health data (🔴 Internal call to health service) 
 
-<br><hr><hr>
+<br>*🔴 Add vegetarian info in the profile table*
+  <br><hr><hr>
 
 
 ## Nutrition service
@@ -53,3 +54,13 @@ The following sections describe the planned **database design**, relations betwe
 
 <br><hr><hr>
 
+## Mental Health service
+The following sections describe the planned **database design**, relations between different tables, **required API endpoints and inter-service dependencies**. Information provided here is not fixed. **Include more if needed**. If any API/service requires an internal call to a different service then use this icon 🔴 to mark it as important so that the developer assigned to that particular service can see high priority API easily.
+### Database relations
+![alt text](/Resources/DBDiagrams/MentalHealthService.png?raw=true)
+### Required APIS
+*API's that are mentioned in  the requirements list are marked bold.*
+- **/mental-health/exercises**: Create all 4 CRUD API's for mental health exercise.
+- **/mental-health/mood-tracking**:  Create all 4 CRUD API's for mood data. Use mood enum of at least 5 or more mood types.
+
+<br><hr><hr>
