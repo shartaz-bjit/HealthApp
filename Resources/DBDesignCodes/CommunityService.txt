@@ -1,0 +1,64 @@
+table group {
+  group_id string [pk]
+  name string
+  description string
+  creation_date date
+  last_activity date
+}
+
+table group_members {
+  role string
+  user_id string
+  group_id string [ref: < group.group_id]
+}
+
+table post {
+  post_id strting [pk]
+  name_of_user string
+  content string
+  comments Comments
+  date datetime
+  likes int
+  dislikes int
+  privacy string
+  group_id string [ref: < group.group_id]
+  user_id string
+}
+
+table comments {
+  comments_id string [pk]
+  name_of_user string
+  content string
+  replies comments
+  date datetime
+  likes int
+  user_id string
+  post_id string [ref: < post.post_id]
+}
+
+table post_follow {
+  user_id string
+  post_id string [ref: < post.post_id]
+}
+
+table achievement {
+  achievement_id string [pk]
+  title string
+  goal_description string
+  target_score decimal
+  difficulty string
+}
+
+table achievement_stats{
+  achievement_stats_id string
+  achievement_progress achievement_progresses
+  user_id string
+}
+
+table achievement_progress {
+  achievement_id achievement_id
+  score decimal
+  achievement_stats_id string [ref: < achievement_stats.achievement_stats_id]
+}
+
+
