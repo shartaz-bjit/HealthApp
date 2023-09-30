@@ -23,7 +23,7 @@ public class Profile {
     @Column(name = "profile-id")
     private UUID profileId;
     @Column(name = "user-id")
-    private String userId;
+    private UUID userId;
     @Column(name = "gender")
     private String gender;
     @Column(name = "date-of-birth")
@@ -31,9 +31,9 @@ public class Profile {
     @Column(name = "blood-group")
     private String bloodGroup;
     @Column(name ="vegetarian")
-    private boolean vegetarian;
+    private Boolean vegetarian;
     @Column(name = "goal-weight")
-    private int goalWeight;
+    private Integer goalWeight;
     @Column(name = "target-period")
-    private int targetPeriod;
+    private Integer targetPeriod;
 }

@@ -7,17 +7,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.UUID;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 public class ProfileRequestDto {
-    private String userId;
+    private UUID userId;
     private String gender;
     private Date dateOfBirth;
     private String bloodGroup;
-    private boolean vegetarian;
-    private int goalWeight;
-    private int targetPeriod;
+    private Boolean vegetarian;
+    private Integer goalWeight;
+    private Integer targetPeriod;
 }

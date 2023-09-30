@@ -23,7 +23,7 @@ public class Contact {
     @Column(name = "contact-id")
     private UUID contactId;
     @Column(name = "user-id")
-    private String userId;
+    private UUID userId;
     @Column(name = "phone-primary")
     private String primaryPhoneNumber;
     @Column(name = "phone-optional")

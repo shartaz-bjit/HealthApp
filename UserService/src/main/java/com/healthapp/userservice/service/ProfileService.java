@@ -4,8 +4,10 @@ import com.healthapp.userservice.model.ProfileRequestDto;
 import com.healthapp.userservice.model.ProfileResponseDto;
 import com.healthapp.userservice.model.ProfileUpdateDto;
 
+import java.util.UUID;
+
 public interface ProfileService {
     void addProfile(ProfileRequestDto profileRequestDto);
-    void updateProfile(ProfileUpdateDto profileUpdateDto);
-    void findById(ProfileResponseDto profileResponseDto);
+    void updateProfile(ProfileUpdateDto profileUpdateDto, UUID userId);
+    ProfileResponseDto findById(UUID userId);
 }

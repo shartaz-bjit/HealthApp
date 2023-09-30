@@ -49,6 +49,16 @@ public class ContactServiceImpl implements ContactService {
 
     @Override
     public ContactResponseDto getContactById(UUID userId) {
-
+        Optional<Contact> optionalContact=contactRepository.findByUserId(userId);
+        if(optionalContact.isPresent()){
+            Contact contact = optionalContact.get();
+            ContactResponseDto responseDto = new ContactResponseDto();
+            responseDto.setPrimaryPhoneNumber(contact.getPrimaryPhoneNumber());
+            responseDto.setOptionalPhoneNumber(contact.getOptionalPhoneNumber());
+            responseDto.setCountry(contact.getCountry());
+            responseDto.setCity(contact.getCity());
+            return responseDto;
+        }
+        return null;
     }
 }

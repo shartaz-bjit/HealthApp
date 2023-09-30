@@ -15,7 +15,7 @@ public class ProfileUpdateDto {
     private String gender;
     private Date dateOfBirth;
     private String bloodGroup;
-    private boolean vegetarian;
-    private int goalWeight;
-    private int targetPeriod;
+    private Boolean vegetarian;
+    private Integer goalWeight;
+    private Integer targetPeriod;
 }

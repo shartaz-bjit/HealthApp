@@ -6,12 +6,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.UUID;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 public class ContactRequestDto {
-    private String userId;
+    private UUID userId;
     private String primaryPhoneNumber;
     private String optionalPhoneNumber;
     private String country;
