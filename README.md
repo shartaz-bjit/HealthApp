@@ -10,7 +10,6 @@ The following sections describe the planned **database design**, relations betwe
 ### Database relations
 ![alt text](/Resources/DBDiagrams/UserService.png?raw=true)
 ### Required APIS
-*API's that are mentioned in  the requirements list are marked bold.*
 
 - **/users/register**: User registration.
 - **/users/login**: User login, returns JWT auth token with user_id, roles and expire time.
@@ -38,7 +37,6 @@ The following sections describe the planned **database design**, relations betwe
 ### Database relations
 ![alt text](/Resources/DBDiagrams/NutritionService.png?raw=true)
 ### Required APIS
-*API's that are mentioned in  the requirements list are marked bold.*
 
 - **/nutrition/**: Make all 4 CRUD API's - create, read, update, delete.
 - **/nutrition/search**: Search for healthy foods. If the searched keyword matches with any food (organic) then return all of its information with recipe list as well, however if there is no recipe then just return the food info. 
@@ -59,8 +57,34 @@ The following sections describe the planned **database design**, relations betwe
 ### Database relations
 ![alt text](/Resources/DBDiagrams/MentalHealthService.png?raw=true)
 ### Required APIS
-*API's that are mentioned in  the requirements list are marked bold.*
 - **/mental-health/exercises**: Create all 4 CRUD API's for mental health exercise.
 - **/mental-health/mood-tracking**:  Create all 4 CRUD API's for mood data. Use mood enum of at least 5 or more mood types.
+
+
+
+<br><hr><hr>
+
+## Community & Social service
+The following sections describe the planned **database design**, relations between different tables, **required API endpoints and inter-service dependencies**. Information provided here is not fixed. **Include more if needed**. If any API/service requires an internal call to a different service then use this icon 🔴 to mark it as important so that the developer assigned to that particular service can see high priority API easily.
+### Database relations
+![alt text](/Resources/DBDiagrams/CommunityService.png?raw=true)
+### Required APIS
+- **/community/groups**: Create all 4 CRUD API's for group.
+- **/community/groups/add-member**: Add new member to the group with role.
+- **/community/groups/remove-member**: Remove member from group.
+  <br><br>
+- **/community/posts**:  Create all 4 CRUD API's for posts. 
+- - If its a group post, set privacy to *"GROUP"* and provide group_id otherwise privacy should be public/private and group_id should be null
+- - Name of user should be attempted to be parsed from User service during post creation and get post services. However, in case of fail, go with leaving it *INACCESSIBLE USER*.
+- **/community/interactions/{post_id}/add-like**: Add a new like
+- **/community/interactions/{post_id}/add-dislike**: Add a new dislike
+  <br><br>
+- **/community/posts/comments**: Create all 4 CRUD API's for comments'
+- **/community/posts/comments/interactions/{comment_id}/add-like**: Add like to a comment
+- **/community/posts/comments/interactions/{comment_id}/remove-like**: Remove like from a comment
+  <br><br>
+- **/community/achievements**: Create all 4 CRUD API's for achievements
+- **/community/achievements/add-progress/{user_id}/{achievement_id}/{score}**: Update an achievement score for a user
+- **/community/achievements/by-user/{user_id}**: Give a list of all achievement progresses by an user.  
 
 <br><hr><hr>
