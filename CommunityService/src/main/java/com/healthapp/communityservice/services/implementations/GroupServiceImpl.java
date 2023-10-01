@@ -1,4 +1,4 @@
-package com.healthapp.communityservice.services.implemtations;
+package com.healthapp.communityservice.services.implementations;
 
 import com.healthapp.communityservice.entities.Group;
 import com.healthapp.communityservice.entities.Membership;

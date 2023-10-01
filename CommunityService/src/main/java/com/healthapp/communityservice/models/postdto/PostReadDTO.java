@@ -1,7 +1,7 @@
 package com.healthapp.communityservice.models.postdto;
 
 import com.healthapp.communityservice.enums.PostPrivacy;
-import com.healthapp.communityservice.models.commentdt.CommentReadDTO;
+import com.healthapp.communityservice.models.commentdto.CommentReadDTO;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;

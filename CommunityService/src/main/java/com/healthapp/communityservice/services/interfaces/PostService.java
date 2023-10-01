@@ -20,4 +20,5 @@ public interface PostService {
     public void addDislike(UUID postId, UUID userId);
     public void addFollower(UUID postId, UUID userId);
     public void removeFollower(UUID postId, UUID userId);
+    public void removeInteraction(UUID postId, UUID userId);
 }

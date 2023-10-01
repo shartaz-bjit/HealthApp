@@ -1,4 +1,4 @@
-package com.healthapp.communityservice.models.commentdt;
+package com.healthapp.communityservice.models.commentdto;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

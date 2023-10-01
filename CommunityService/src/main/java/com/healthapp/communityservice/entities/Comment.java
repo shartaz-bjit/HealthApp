@@ -38,7 +38,7 @@ public class Comment {
     @JsonIgnore
     private Comment parentComment;
 
-    @OneToMany(mappedBy = "parentComment")
+    @OneToMany(mappedBy = "parentComment", cascade = CascadeType.ALL)
     private List<Comment> replies;
 
     private UUID userId;

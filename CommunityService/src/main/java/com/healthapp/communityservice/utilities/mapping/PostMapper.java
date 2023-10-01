@@ -4,10 +4,9 @@ import com.healthapp.communityservice.entities.Comment;
 import com.healthapp.communityservice.entities.Group;
 import com.healthapp.communityservice.entities.Post;
 import com.healthapp.communityservice.enums.PostPrivacy;
-import com.healthapp.communityservice.models.commentdt.CommentReadDTO;
+import com.healthapp.communityservice.models.commentdto.CommentReadDTO;
 import com.healthapp.communityservice.models.postdto.PostCreateDTO;
 import com.healthapp.communityservice.models.postdto.PostReadDTO;
-import com.healthapp.communityservice.repositories.GroupRepository;
 import com.healthapp.communityservice.services.interfaces.GroupService;
 import org.springframework.stereotype.Component;
 

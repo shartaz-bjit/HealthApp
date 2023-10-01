@@ -78,6 +78,12 @@ public class PostController {
         postService.removeFollower(postId, userId);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
+
+    @DeleteMapping("/interactions/{postId}/remove-interaction/{userId}")
+    public ResponseEntity<String> removeInteraction(@PathVariable UUID postId, @PathVariable UUID userId){
+        postService.removeInteraction(postId, userId);
+        return new ResponseEntity<>("Like/Dislike removed.", HttpStatus.OK);
+    }
 }
 
 

@@ -1,4 +1,4 @@
-package com.healthapp.communityservice.services.implemtations;
+package com.healthapp.communityservice.services.implementations;
 
 import com.healthapp.communityservice.entities.Interact;
 import com.healthapp.communityservice.entities.Post;
@@ -124,6 +124,18 @@ public class PostServiceImpl implements PostService {
         if(!post.getFollowers().stream().filter(p -> p.getUserId().equals(userId)).collect(Collectors.toList()).isEmpty()){
             post.setFollowers(post.getFollowers().stream().filter(p -> !p.getUserId().equals(userId)).collect(Collectors.toList()));
         }
+        postRepository.save(post);
+    }
+
+    @Override
+    public void removeInteraction(UUID postId, UUID userId) {
+        Optional<Post> postOp = postRepository.findById(postId);
+        if(postOp.isEmpty()){
+            return;
+        }
+        Post post = postOp.get();
+        post.setLikes(post.getLikes().stream().filter(p -> !p.getUserId().equals(userId)).collect(Collectors.toList()));
+        post.setDislikes(post.getDislikes().stream().filter(p -> !p.getUserId().equals(userId)).collect(Collectors.toList()));
         postRepository.save(post);
     }
 }
