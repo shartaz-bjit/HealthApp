@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 @Component
-public class GroupMapping {
+public class GroupMapper {
     public Group getGroup(GroupDTO groupDto) {
         Group group = new Group();
 

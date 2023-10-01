@@ -11,6 +11,7 @@ import java.util.UUID;
 @Entity
 public class Interact {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer interactId;
     private UUID userId;
 }

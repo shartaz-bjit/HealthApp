@@ -7,7 +7,7 @@ import com.healthapp.communityservice.models.groupdto.GroupDTO;
 import com.healthapp.communityservice.repositories.GroupRepository;
 import com.healthapp.communityservice.repositories.MembershipRepository;
 import com.healthapp.communityservice.services.interfaces.GroupService;
-import com.healthapp.communityservice.utilities.mapping.GroupMapping;
+import com.healthapp.communityservice.utilities.mapping.GroupMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,9 +18,9 @@ import java.util.stream.Collectors;
 public class GroupServiceImpl implements GroupService {
     private final GroupRepository groupRepository;
     private final MembershipRepository membershipRepository;
-    private final GroupMapping groupMapping;
+    private final GroupMapper groupMapping;
 
-    public GroupServiceImpl(GroupRepository groupRepository, MembershipRepository membershipRepository, GroupMapping groupMapping) {
+    public GroupServiceImpl(GroupRepository groupRepository, MembershipRepository membershipRepository, GroupMapper groupMapping) {
         this.groupRepository = groupRepository;
         this.membershipRepository = membershipRepository;
         this.groupMapping = groupMapping;

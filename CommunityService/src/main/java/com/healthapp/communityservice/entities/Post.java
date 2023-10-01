@@ -10,11 +10,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.util.UUID;
 
-@Getter
-@Setter
-@RequiredArgsConstructor
-@Entity
-@Table(name = "posts")
+@Getter @Setter @RequiredArgsConstructor @Entity  @Table(name = "posts")
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
