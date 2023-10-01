@@ -21,7 +21,6 @@ public class UserRequestDto {
     private String userName;
     private String password;
     private String email;
-    private UserEntity.Roles roles;
     private Contact contact;
     private Profile profile;
 }

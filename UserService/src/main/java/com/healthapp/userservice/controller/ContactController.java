@@ -1,5 +1,7 @@
 package com.healthapp.userservice.controller;
 
+import com.healthapp.userservice.domain.Contact;
+import com.healthapp.userservice.domain.UserEntity;
 import com.healthapp.userservice.model.ContactRequestDto;
 import com.healthapp.userservice.model.ContactResponseDto;
 import com.healthapp.userservice.model.ContactUpdateDto;
@@ -9,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -39,5 +42,9 @@ public class ContactController {
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
+    @GetMapping("/get-all")
+    public ResponseEntity<List<Contact>> getAllContacts(){
+        return new ResponseEntity<>(contactService.getAllContacts(),HttpStatus.OK);
     }
 }

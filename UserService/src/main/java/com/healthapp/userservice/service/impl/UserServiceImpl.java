@@ -22,7 +22,6 @@ public class UserServiceImpl implements UserService {
         userEntity.setFirstName(userRequestDto.getFirstName());
         userEntity.setLastName(userRequestDto.getLastName());
         userEntity.setPassword(userRequestDto.getPassword());
-        userEntity.setRoles(userRequestDto.getRoles());
         userEntity.setEmail(userRequestDto.getEmail());
         userRepository.save(userEntity);
     }
@@ -69,5 +68,35 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<UserEntity> getAllUsers() {
         return userRepository.findAll();
+    }
+
+    @Override
+    public void changePassword(ChangePasswordDto changePasswordDto, UUID userId) {
+        Optional<UserEntity> optionalUser=userRepository.findById(userId);
+        if(optionalUser.isPresent()){
+            UserEntity user=optionalUser.get();
+            if(user.getPassword().equals(changePasswordDto.getOldPassword())){
+                user.setPassword(changePasswordDto.getNewPassword());
+                userRepository.save(user);
+            }
+        }
+    }
+
+    @Override
+    public void assignRole(AssignRoleDto assignRoleDto, UUID userId) {
+        Optional<UserEntity> optionalUser= userRepository.findById(userId);
+        if(optionalUser.isPresent()){
+            UserEntity user=optionalUser.get();
+            user.setRoles(assignRoleDto.getRole());
+            userRepository.save(user);
+        }
+    }
+
+    @Override
+    public void removeRole(UUID userId) {
+        Optional<UserEntity> optionalUser= userRepository.findById(userId);
+        if(optionalUser.isPresent()){
+            optionalUser.get().setRoles(null);
+        }
     }
 }
