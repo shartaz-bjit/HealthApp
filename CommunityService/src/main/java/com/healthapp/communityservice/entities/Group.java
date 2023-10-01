@@ -15,14 +15,14 @@ public class Group {
     @Id
     @Column(name = "community_id")
     @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID community;
+    private UUID communityId;
 
     private String name;
     private String description;
     private LocalDateTime timeCreated;
     private LocalDateTime lastActivity;
-//    @OneToMany(cascade = CascadeType.ALL)
-//    List<Post> posts;
+    @OneToMany(mappedBy = "community",cascade = CascadeType.ALL)
+    List<Post> posts;
     @OneToMany(mappedBy = "community", cascade = CascadeType.ALL)
     private List<Membership> members;
 }

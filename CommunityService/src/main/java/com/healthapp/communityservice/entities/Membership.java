@@ -2,6 +2,8 @@ package com.healthapp.communityservice.entities;
 
 import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.healthapp.communityservice.enums.GroupMemberRole;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -13,10 +15,11 @@ public class Membership {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID membershipId;
-    private String role;
+    GroupMemberRole role;
     private UUID userId;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "community_id")
     private Group community;
 }

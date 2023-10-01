@@ -1,5 +1,6 @@
 package com.healthapp.communityservice.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.healthapp.communityservice.enums.PostPrivacy;
 
 import java.time.LocalDateTime;
@@ -37,5 +38,8 @@ public class Post {
 
     // Parent references
     private UUID userId;
-    private UUID groupId;
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name = "community_id")
+    private Group community;
 }
