@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/mental-health/exercises")
@@ -31,7 +32,7 @@ public class MentalHealthExerciseController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<MentalHealthExercise> getMentalHealthExerciseById(@PathVariable Long id) {
+    public ResponseEntity<MentalHealthExercise> getMentalHealthExerciseById(@PathVariable UUID id) {
         MentalHealthExercise exercise = exerciseServiceImp.getMentalHealthExerciseById(id);
         if (exercise != null) {
             return new ResponseEntity<>(exercise, HttpStatus.OK);
@@ -41,7 +42,7 @@ public class MentalHealthExerciseController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<MentalHealthExercise> updateMentalHealthExercise(@PathVariable Long id, @RequestBody MentalHealthExerciseDTO exerciseDTO) {
+    public ResponseEntity<MentalHealthExercise> updateMentalHealthExercise(@PathVariable UUID id, @RequestBody MentalHealthExerciseDTO exerciseDTO) {
         MentalHealthExercise updatedExercise = exerciseServiceImp.updateMentalHealthExercise(id, exerciseDTO);
         if (updatedExercise != null) {
             return new ResponseEntity<>(updatedExercise, HttpStatus.OK);
@@ -51,7 +52,7 @@ public class MentalHealthExerciseController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteMentalHealthExercise(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteMentalHealthExercise(@PathVariable UUID id) {
         boolean deleted = exerciseServiceImp.deleteMentalHealthExercise(id);
         if (deleted) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);

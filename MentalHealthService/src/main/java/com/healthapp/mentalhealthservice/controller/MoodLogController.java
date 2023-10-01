@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/mental-health/mood-tracking")
@@ -31,7 +32,7 @@ public class MoodLogController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<MoodLog> getMoodLogById(@PathVariable Long id) {
+    public ResponseEntity<MoodLog> getMoodLogById(@PathVariable UUID id) {
         MoodLog moodLog = moodLogServiceImpl.getMoodLogById(id);
         if (moodLog != null) {
             return new ResponseEntity<>(moodLog, HttpStatus.OK);
@@ -41,7 +42,7 @@ public class MoodLogController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<MoodLog> updateMoodLog(@PathVariable Long id, @RequestBody MoodLogDTO moodLogDTO) {
+    public ResponseEntity<MoodLog> updateMoodLog(@PathVariable UUID id, @RequestBody MoodLogDTO moodLogDTO) {
         MoodLog updatedMoodLog = moodLogServiceImpl.updateMoodLog(id, moodLogDTO);
         if (updatedMoodLog != null) {
             return new ResponseEntity<>(updatedMoodLog, HttpStatus.OK);
@@ -51,7 +52,7 @@ public class MoodLogController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteMoodLog(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteMoodLog(@PathVariable UUID id) {
         boolean deleted = moodLogServiceImpl.deleteMoodLog(id);
         if (deleted) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
