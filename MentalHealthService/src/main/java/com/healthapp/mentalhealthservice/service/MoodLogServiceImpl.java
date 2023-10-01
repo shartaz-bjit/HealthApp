@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class MoodLogServiceImpl extends MoodLogService {
@@ -32,7 +33,7 @@ public class MoodLogServiceImpl extends MoodLogService {
     }
 
     @Override
-    public MoodLog updateMoodLog(Long id, MoodLogDTO moodLogDTO) {
+    public MoodLog updateMoodLog(UUID id, MoodLogDTO moodLogDTO) {
         Optional<MoodLog> moodLogOptional = moodLogRepository.findById(id);
         if (moodLogOptional.isPresent()) {
             MoodLog moodLog = moodLogOptional.get();
@@ -47,18 +48,14 @@ public class MoodLogServiceImpl extends MoodLogService {
     }
 
     @Override
-    public MoodLog getMoodLogById(Long id) {
+    public MoodLog getMoodLogById(UUID id) {
         Optional<MoodLog> moodLogOptional = moodLogRepository.findById(id);
         return moodLogOptional.orElse(null);
     }
 
-//    @Override
-//    public void deleteMoodLog(Long id) {
-//        moodLogRepository.deleteById(id);
-//    }
 
     @Override
-    public boolean deleteMoodLog(Long id) {
+    public boolean deleteMoodLog(UUID id) {
         Optional<MoodLog> moodLogOptional = moodLogRepository.findById(id);
         if (moodLogOptional.isPresent()) {
             moodLogRepository.deleteById(id);
