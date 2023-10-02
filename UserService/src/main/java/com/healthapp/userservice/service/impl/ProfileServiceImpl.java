@@ -28,14 +28,15 @@ public class ProfileServiceImpl implements ProfileService {
             Profile profile = new Profile();
             profile.setUserId(profileRequestDto.getUserId());
             profile.setGender(profileRequestDto.getGender());
-            profile.setBloodGroup(profileRequestDto.getBloodGroup());
+            Profile.BloodGroup bloodGroup = Profile.BloodGroup.fromString(profileRequestDto.getBloodGroup());
+            profile.setBloodGroup(bloodGroup);
             profile.setDateOfBirth(profileRequestDto.getDateOfBirth());
             profile.setVegetarian(profileRequestDto.getVegetarian());
             profile.setGoalWeight(profileRequestDto.getGoalWeight());
             profile.setTargetPeriod(profileRequestDto.getTargetPeriod());
+            profileRepository.save(profile);
             optionalUser.get().setProfile(profile);
             userRepository.save(optionalUser.get());
-            profileRepository.save(profile);
         }
     }
 
@@ -48,13 +49,14 @@ public class ProfileServiceImpl implements ProfileService {
                     profile.setGender(profileUpdateDto.getGender());
                 }
                 if (profileUpdateDto.getBloodGroup() != null) {
-                    profile.setBloodGroup(profileUpdateDto.getBloodGroup());
+                    Profile.BloodGroup bloodGroup = Profile.BloodGroup.fromString(profileUpdateDto.getBloodGroup());
+                    profile.setBloodGroup(bloodGroup);
                 }
                 if (profileUpdateDto.getVegetarian() != null) {
                     profile.setVegetarian(profileUpdateDto.getVegetarian());
                 }
                 if (profileUpdateDto.getDateOfBirth() != null) {
-                    profile.setBloodGroup(profileUpdateDto.getBloodGroup());
+                    profile.setDateOfBirth(profileUpdateDto.getDateOfBirth());
                 }
                 if (profileUpdateDto.getGoalWeight() != null) {
                     profile.setGoalWeight(profileUpdateDto.getGoalWeight());
@@ -62,9 +64,9 @@ public class ProfileServiceImpl implements ProfileService {
                 if (profileUpdateDto.getTargetPeriod() != null) {
                     profile.setTargetPeriod(profileUpdateDto.getTargetPeriod());
                 }
+                profileRepository.save(profile);
                 user.get().setProfile(profile);
                 userRepository.save(user.get());
-                profileRepository.save(profile);
             });
         }
     }

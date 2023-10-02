@@ -23,6 +23,7 @@ public class UserServiceImpl implements UserService {
         userEntity.setLastName(userRequestDto.getLastName());
         userEntity.setPassword(userRequestDto.getPassword());
         userEntity.setEmail(userRequestDto.getEmail());
+        userEntity.setRoles(UserEntity.Roles.User);
         userRepository.save(userEntity);
     }
 
@@ -95,8 +96,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public void removeRole(UUID userId) {
         Optional<UserEntity> optionalUser= userRepository.findById(userId);
-        if(optionalUser.isPresent()){
-            optionalUser.get().setRoles(null);
-        }
+        optionalUser.ifPresent(userEntity -> userEntity.setRoles(null));
     }
 }

@@ -32,34 +32,48 @@ public class ContactServiceImpl implements ContactService {
             contact.setOptionalPhoneNumber(contactRequestDto.getOptionalPhoneNumber());
             contact.setCountry(contactRequestDto.getCountry());
             contact.setCity(contactRequestDto.getCity());
+            contact.setArea(contactRequestDto.getArea());
+            contact.setRoadNumber(contactRequestDto.getRoadNumber());
+            contact.setBlockNumber(contactRequestDto.getBlockNumber());
+            contact.setHouseNumber(contactRequestDto.getHouseNumber());
+            contactRepository.save(contact);
             optionalUser.get().setContact(contact);
             userRepository.save(optionalUser.get());
-            contactRepository.save(contact);
         }
     }
 
     @Override
     public void updateContact(ContactUpdateDto contactUpdateDto, UUID userId) {
         Optional<UserEntity> user = userRepository.findById(userId);
-        if(user.isPresent()) {
-            contactRepository.findByUserId(userId).ifPresent(contact -> {
-                if (contactUpdateDto.getPrimaryPhoneNumber() != null) {
-                    contact.setPrimaryPhoneNumber(contactUpdateDto.getPrimaryPhoneNumber());
-                }
-                if (contactUpdateDto.getOptionalPhoneNumber() != null) {
-                    contact.setOptionalPhoneNumber(contactUpdateDto.getOptionalPhoneNumber());
-                }
-                if (contactUpdateDto.getCountry() != null) {
-                    contact.setCountry(contactUpdateDto.getCountry());
-                }
-                if (contactUpdateDto.getCity() != null) {
-                    contact.setCity(contactUpdateDto.getCity());
-                }
-                user.get().setContact(contact);
-                userRepository.save(user.get());
-                contactRepository.save(contact);
-            });
-        }
+        user.ifPresent(userEntity -> contactRepository.findByUserId(userId).ifPresent(contact -> {
+            if (contactUpdateDto.getPrimaryPhoneNumber() != null) {
+                contact.setPrimaryPhoneNumber(contactUpdateDto.getPrimaryPhoneNumber());
+            }
+            if (contactUpdateDto.getOptionalPhoneNumber() != null) {
+                contact.setOptionalPhoneNumber(contactUpdateDto.getOptionalPhoneNumber());
+            }
+            if (contactUpdateDto.getCountry() != null) {
+                contact.setCountry(contactUpdateDto.getCountry());
+            }
+            if (contactUpdateDto.getCity() != null) {
+                contact.setCity(contactUpdateDto.getCity());
+            }
+            if (contactUpdateDto.getArea() != null) {
+                contact.setArea(contactUpdateDto.getArea());
+            }
+            if (contactUpdateDto.getRoadNumber() != null) {
+                contact.setRoadNumber(contactUpdateDto.getRoadNumber());
+            }
+            if (contactUpdateDto.getBlockNumber() != null) {
+                contact.setBlockNumber(contactUpdateDto.getBlockNumber());
+            }
+            if (contactUpdateDto.getHouseNumber() != null) {
+                contact.setHouseNumber(contactUpdateDto.getHouseNumber());
+            }
+            contactRepository.save(contact);
+            userEntity.setContact(contact);
+            userRepository.save(userEntity);
+        }));
     }
 
 
@@ -73,6 +87,10 @@ public class ContactServiceImpl implements ContactService {
             responseDto.setOptionalPhoneNumber(contact.getOptionalPhoneNumber());
             responseDto.setCountry(contact.getCountry());
             responseDto.setCity(contact.getCity());
+            responseDto.setArea(contact.getArea());
+            responseDto.setRoadNumber(contact.getRoadNumber());
+            responseDto.setBlockNumber(contact.getBlockNumber());
+            responseDto.setHouseNumber(contact.getHouseNumber());
             return responseDto;
         }
         return null;
