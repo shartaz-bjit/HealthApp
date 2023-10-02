@@ -1,5 +1,7 @@
 package com.healthapp.nutritionservice.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,7 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
-import java.util.UUID;
+import java.util.*;
 
 @Entity
 @NoArgsConstructor
@@ -31,11 +33,7 @@ public class Food {
     @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 
-    @OneToOne
-    @JoinColumn(name = "recipe_id")
-    private Recipe recipe;
-
-    @OneToOne
-    @JoinColumn(name = "nutrition_id")
-    private Nutrition nutrition;
+    @ManyToMany(mappedBy = "foods")
+    @JsonIgnoreProperties("foods")
+    private List<Recipe> recipes= new ArrayList<>();
 }

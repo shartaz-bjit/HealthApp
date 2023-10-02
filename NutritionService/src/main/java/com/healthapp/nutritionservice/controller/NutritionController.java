@@ -23,6 +23,16 @@ public class NutritionController {
         return new ResponseEntity<>("Nutrition Data Added Successfully!", HttpStatus.CREATED);
     }
 
+    @GetMapping("/get-all")
+    public ResponseEntity<List<Nutrition>> getAllNutrition() {
+        try {
+            List<Nutrition> nutritionList = nutritionService.getAllNutrition();
+            return new ResponseEntity<>(nutritionList, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     @GetMapping("/get/{nutritionId}")
     public ResponseEntity<Nutrition> getNutritionById(@PathVariable UUID nutritionId) {
         Nutrition nutrition = nutritionService.getNutritionById(nutritionId);
@@ -31,16 +41,6 @@ public class NutritionController {
             return new ResponseEntity<>(nutrition, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-
-    @GetMapping("/get-all")
-    public ResponseEntity<List<Nutrition>> getAllNutrition() {
-        try {
-            List<Nutrition> nutritionList = nutritionService.getAllNutrition();
-            return new ResponseEntity<>(nutritionList, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 

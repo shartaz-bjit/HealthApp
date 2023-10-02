@@ -23,12 +23,6 @@ public class Nutrition {
     @Column(name = "nutrition_id")
     private UUID nutritionId;
 
-    @Column(name = "recipe_id")
-    private UUID recipeId;
-
-    @Column(name = "food_id")
-    private UUID foodId;
-
     @Column(name = "calorie")
     private double calorie;
 
@@ -67,4 +61,12 @@ public class Nutrition {
 
     @Column(name = "vegetarian")
     private boolean vegetarian;
+
+    @OneToOne
+    @JoinColumn(name = "recipe_id")
+    private Recipe recipe;
+
+    @OneToOne
+    @JoinColumn(name = "food_id")
+    private Food food;
 }

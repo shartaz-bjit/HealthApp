@@ -24,13 +24,13 @@ public class NutritionServiceImpl implements NutritionService {
     }
 
     @Override
-    public Nutrition getNutritionById(UUID nutritionId) {
-        return nutritionRepository.findById(nutritionId).orElse(null);
+    public List<Nutrition> getAllNutrition() {
+        return nutritionRepository.findAll();
     }
 
     @Override
-    public List<Nutrition> getAllNutrition() {
-        return nutritionRepository.findAll();
+    public Nutrition getNutritionById(UUID nutritionId) {
+        return nutritionRepository.findById(nutritionId).orElse(null);
     }
 
     @Transactional
@@ -39,8 +39,8 @@ public class NutritionServiceImpl implements NutritionService {
         Nutrition existingNutrition = nutritionRepository.findById(nutritionId)
                 .orElseThrow(() -> new NutritionNotFoundException("Nutrition data not found with ID: " + nutritionId));
 
-        existingNutrition.setRecipeId(updatedNutrition.getRecipeId());
-        existingNutrition.setFoodId(updatedNutrition.getFoodId());
+//        existingNutrition.setRecipeId(updatedNutrition.getRecipeId());
+//        existingNutrition.setFoodId(updatedNutrition.getFoodId());
         existingNutrition.setCalorie(updatedNutrition.getCalorie());
         existingNutrition.setProtein(updatedNutrition.getProtein());
         existingNutrition.setCarbohydrates(updatedNutrition.getCarbohydrates());
