@@ -7,11 +7,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.UUID;
 
-@Service
-public abstract class MoodLogService {
-    protected abstract MoodLog createMoodLog(MoodLogDTO moodLogDTO);
-    abstract MoodLog updateMoodLog(UUID id, MoodLogDTO moodLogDTO);
-    abstract MoodLog getMoodLogById(UUID id);
-    abstract boolean deleteMoodLog(UUID id);
-    abstract List<MoodLog> getAllMoodLogs();
+public interface  MoodLogService {
+     MoodLog createMoodLog(MoodLogDTO moodLogDTO);
+     MoodLog updateMoodLog(UUID id, MoodLogDTO moodLogDTO);
+     MoodLog getMoodLogById(UUID id);
+     boolean deleteMoodLog(UUID id);
+     List<MoodLog> getAllMoodLogs();
 }

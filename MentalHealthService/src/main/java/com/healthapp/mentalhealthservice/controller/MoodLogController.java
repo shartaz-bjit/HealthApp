@@ -2,9 +2,7 @@ package com.healthapp.mentalhealthservice.controller;
 
 import com.healthapp.mentalhealthservice.dto.MoodLogDTO;
 import com.healthapp.mentalhealthservice.entity.MoodLog;
-import com.healthapp.mentalhealthservice.service.MoodLogService;
 import com.healthapp.mentalhealthservice.service.MoodLogServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,13 +14,28 @@ import java.util.UUID;
 @RequestMapping("/mental-health/mood-tracking")
 public class MoodLogController {
 
-    @Autowired
-    private MoodLogServiceImpl moodLogServiceImpl;
+//    @Autowired
+    private final MoodLogServiceImpl moodLogServiceImpl;
+
+    public MoodLogController(MoodLogServiceImpl moodLogServiceImpl) {
+        this.moodLogServiceImpl = moodLogServiceImpl;
+    }
+
+//    @PostMapping("/create")
+//    public ResponseEntity<MoodLog> createMoodLog(@RequestBody MoodLogDTO moodLogDTO) {
+//        MoodLog createdMoodLog = moodLogServiceImpl.createMoodLog(moodLogDTO);
+//        return new ResponseEntity<>(createdMoodLog, HttpStatus.CREATED);
+////        return new ResponseEntity<>("Comment created successfully", HttpStatus.CREATED);
+//    }
 
     @PostMapping("/create")
-    public ResponseEntity<MoodLog> createMoodLog(@RequestBody MoodLogDTO moodLogDTO) {
+    public ResponseEntity<String> createMoodLog(@RequestBody MoodLogDTO moodLogDTO) {
         MoodLog createdMoodLog = moodLogServiceImpl.createMoodLog(moodLogDTO);
-        return new ResponseEntity<>(createdMoodLog, HttpStatus.CREATED);
+        if (createdMoodLog != null) {
+            return new ResponseEntity<>("MoodLog created successfully", HttpStatus.CREATED);
+        } else {
+            return new ResponseEntity<>("Failed to create MoodLog", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @GetMapping("/list")

@@ -22,5 +22,5 @@ public class MoodLog {
     private LocalDateTime date;
     private BigDecimal moodRating;
     private String note;
-    private String userId;
+    private UUID userId;
 }

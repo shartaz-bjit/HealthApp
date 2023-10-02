@@ -1,5 +1,6 @@
 package com.healthapp.mentalhealthservice.service;
 
+
 import com.healthapp.mentalhealthservice.dto.MentalHealthExerciseDTO;
 import com.healthapp.mentalhealthservice.entity.MentalHealthExercise;
 import com.healthapp.mentalhealthservice.repository.MentalHealthExerciseRepository;
@@ -10,8 +11,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+
 @Service
-public class MentalHealthExerciseServiceImpl extends MentalHealthExerciseService {
+public class MentalHealthExerciseServiceImpl implements MentalHealthExerciseService {
 
     private final MentalHealthExerciseRepository exerciseRepository;
 

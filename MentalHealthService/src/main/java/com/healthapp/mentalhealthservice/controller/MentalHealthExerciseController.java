@@ -3,8 +3,7 @@ package com.healthapp.mentalhealthservice.controller;
 
 import com.healthapp.mentalhealthservice.dto.MentalHealthExerciseDTO;
 import com.healthapp.mentalhealthservice.entity.MentalHealthExercise;
-import com.healthapp.mentalhealthservice.service.MentalHealthExerciseServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.healthapp.mentalhealthservice.service.MentalHealthExerciseService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,13 +15,22 @@ import java.util.UUID;
 @RequestMapping("/mental-health/exercises")
 public class MentalHealthExerciseController {
 
-    @Autowired
-    private MentalHealthExerciseServiceImpl exerciseServiceImp;
+    private final MentalHealthExerciseService exerciseServiceImp;
+
+    public MentalHealthExerciseController(MentalHealthExerciseService exerciseServiceImp) {
+        this.exerciseServiceImp = exerciseServiceImp;
+    }
 
     @PostMapping("/create")
-    public ResponseEntity<MentalHealthExercise> createMentalHealthExercise(@RequestBody MentalHealthExerciseDTO exerciseDTO) {
+    public ResponseEntity<String> createMentalHealthExercise(@RequestBody MentalHealthExerciseDTO exerciseDTO) {
         MentalHealthExercise createdExercise = exerciseServiceImp.createMentalHealthExercise(exerciseDTO);
-        return new ResponseEntity<>(createdExercise, HttpStatus.CREATED);
+        if (createdExercise != null) {
+            String successMessage = "MentalHealthExercise created successfully";
+            return new ResponseEntity<>(successMessage, HttpStatus.CREATED);
+        } else {
+            String errorMessage = "Failed to create MentalHealthExercise";
+            return new ResponseEntity<>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @GetMapping("/list")

@@ -7,11 +7,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.UUID;
 
-@Service
-public abstract class MentalHealthExerciseService {
-    abstract MentalHealthExercise createMentalHealthExercise(MentalHealthExerciseDTO exerciseDTO);
-    abstract MentalHealthExercise updateMentalHealthExercise(UUID id, MentalHealthExerciseDTO exerciseDTO);
-    abstract MentalHealthExercise getMentalHealthExerciseById(UUID id);
-    abstract boolean  deleteMentalHealthExercise(UUID id);
-    abstract List<MentalHealthExercise> getAllMentalHealthExercises();
+public interface MentalHealthExerciseService {
+     MentalHealthExercise createMentalHealthExercise(MentalHealthExerciseDTO exerciseDTO);
+     MentalHealthExercise updateMentalHealthExercise(UUID id, MentalHealthExerciseDTO exerciseDTO);
+     MentalHealthExercise getMentalHealthExerciseById(UUID id);
+     boolean  deleteMentalHealthExercise(UUID id);
+     List<MentalHealthExercise> getAllMentalHealthExercises();
 }
+
