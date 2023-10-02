@@ -65,6 +65,15 @@
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/RecommendationServiceAuto" />
+        <option name="gradleJvm" value="corretto-19" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/RecommendationServiceAuto" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/UserService" />
         <option name="gradleHome" value="$PROJECT_DIR$/../../../../../gradle-8.2" />
         <option name="gradleJvm" value="corretto-19" />
