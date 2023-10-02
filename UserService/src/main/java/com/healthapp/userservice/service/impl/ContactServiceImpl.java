@@ -10,6 +10,7 @@ import com.healthapp.userservice.repository.UserRepository;
 import com.healthapp.userservice.service.ContactService;
 import com.netflix.discovery.converters.Auto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -39,6 +40,9 @@ public class ContactServiceImpl implements ContactService {
             contactRepository.save(contact);
             optionalUser.get().setContact(contact);
             userRepository.save(optionalUser.get());
+        }
+        else{
+            throw new EmptyResultDataAccessException("User",1);
         }
     }
 
@@ -93,7 +97,9 @@ public class ContactServiceImpl implements ContactService {
             responseDto.setHouseNumber(contact.getHouseNumber());
             return responseDto;
         }
-        return null;
+        else{
+            throw new EmptyResultDataAccessException("User",1);
+        }
     }
 
     @Override

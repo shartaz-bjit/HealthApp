@@ -29,7 +29,7 @@ public class UserEntity {
     private String lastName;
     @Column(name = "user-name", nullable = false)
     @NotBlank(message = "Username is required!")
-    @Pattern(regexp = "^[a-z0-9]+$", message = "Username can only contain lowercase letters and numbers")
+    @Pattern(regexp = "^(|[a-z0-9]+)$", message = "Username can only contain lowercase letters and numbers")
     private String userName;
     @Column(name = "password", nullable = false)
     @Size(min = 5, message = "Password must be 5 characters long")
