@@ -1,9 +1,6 @@
 package com.healthapp.recommendationserviceauto.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -25,9 +22,14 @@ public class DietRecommendation {
     private boolean vegan;
     private String recommendationMessage;
     private LocalDateTime recommendationTime;
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Insights> insights;
-    private List<Meal> breakfast;
-    private List<Meal> lunch;
-    private List<Meal> dinner;
-    private List<Meal> snacks;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Breakfast> breakfast;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Lunch> lunch;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Snacks> dinner;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Dinner> snacks;
 }

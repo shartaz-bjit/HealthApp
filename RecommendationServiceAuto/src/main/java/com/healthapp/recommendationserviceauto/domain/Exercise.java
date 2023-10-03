@@ -7,16 +7,17 @@ import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+
 import java.util.UUID;
 
-@Getter
-@Setter
-@RequiredArgsConstructor
-@Entity
-public class Meal {
+@Getter @Setter @Entity @RequiredArgsConstructor
+public class Exercise {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    private UUID exerciseId;
     private String description;
-    private Double calories;
+    private String category;
+    private String intensity;
+    private Double duration;
+    private Double calorieBurn;
 }
